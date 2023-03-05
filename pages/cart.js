@@ -22,10 +22,15 @@ const cart = (props) => {
 
 
   const [cProducts, setCProducts] = useState(props.products)
-  
-  Array.from(cProducts).forEach(item => {
-    price = price + item.qty * item.product.price
-  })
+
+  if (cProducts) {
+    Array.from(cProducts).forEach(item => {
+      price = price + item.qty * item.product.price
+    })
+  }
+  else{
+    price=0
+  }
   // console.log(price)
 
   // console.log("products : ", props.products)
@@ -77,11 +82,11 @@ const cart = (props) => {
     }
   }
 
-  const handleCheckout = async (paymentInfo)=> {
+  const handleCheckout = async (paymentInfo) => {
     console.log(paymentInfo)
     const { Token } = parseCookies()
-    const res = await fetch(`${baseURL}/api/payment`,{
-      method:"POST",
+    const res = await fetch(`${baseURL}/api/payment`, {
+      method: "POST",
       headers: {
         "Content-type": "application/json",
         "authorization": `${Token}`
@@ -107,28 +112,28 @@ const cart = (props) => {
   const Total = () => {
     return (
       <div className="w-[100%] text-xl flex justify-center flex-row items-center">
-         <div className="flex flex-row m-5">
+        <div className="flex flex-row m-5">
           Total = Rs. <span className="text-2xl font-semibold flex flex-row relative bottom-1"> {price}</span>
         </div>
         {
           price ?
-          <StripeCheckout
-          name="PaulKart"
-          amount={price*100}
-          image={'../public/cart.avif'}
-          currency="INR"
-          shippingAddress={true}
-          billingAddress={true}
-          zipCode={true}
-          stripeKey="pk_test_51MhRi4SBvqfxrsmoJWWMe6LIixFyJSH24JW4avedL6Z7XB8qVv72wtkP0fPLQWknoCRW2wu26q91ZxpCGS3hNJyP00T6R1weuj"
-          token={(paymentInfo)=>{handleCheckout(paymentInfo)}}
-          >
-          <button
-            type="submit"
-            className="flex justify-center  text-center my-9 p-3 rounded bg-green hover:bg-green-dark focus:outline-none bg-black text-white "
-          >Check Out</button>
-        </StripeCheckout>
-        : <></>
+            <StripeCheckout
+              name="PaulKart"
+              amount={price * 100}
+              image={'../public/cart.avif'}
+              currency="INR"
+              shippingAddress={true}
+              billingAddress={true}
+              zipCode={true}
+              stripeKey="pk_test_51MhRi4SBvqfxrsmoJWWMe6LIixFyJSH24JW4avedL6Z7XB8qVv72wtkP0fPLQWknoCRW2wu26q91ZxpCGS3hNJyP00T6R1weuj"
+              token={(paymentInfo) => { handleCheckout(paymentInfo) }}
+            >
+              <button
+                type="submit"
+                className="flex justify-center  text-center my-9 p-3 rounded bg-green hover:bg-green-dark focus:outline-none bg-black text-white "
+              >Check Out</button>
+            </StripeCheckout>
+            : <></>
         }
       </div>
     )
@@ -146,7 +151,7 @@ const cart = (props) => {
       if (cProducts.length > 0) {
         return (
           <div className="flex flex-row flex-wrap justify-center items-center ">
-            {cProducts.map((item,id) => {
+            {cProducts.map((item, id) => {
 
               return (
                 <div key={id} className="w-[29%] flex flex-row border border-1 border-gray-400 rounded p-5 m-6 mt-[5%] justify-left items-center">
@@ -217,6 +222,18 @@ export async function getServerSideProps(context) {
       props: { error: "You should login!" }
     }
   }
+
+  // export async function getStaticProps(context) {
+  //   const { Token } = parseCookies(context)
+
+  //   if (!Token) {
+  //     const { res } = context
+  //     res.writeHead(300, { Location: "/login" })
+  //     res.end()
+  //     return {
+  //       props: { error: "You should login!" }
+  //     }
+  //   }
 
 
   const res = await fetch(`${baseURL}/api/cart`, {
