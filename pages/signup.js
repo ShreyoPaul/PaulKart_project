@@ -33,7 +33,7 @@ const Signup = () => {
     }else{
         toast(`${data.message}`, { hideProgressBar: true, autoClose: 3000, type: 'success' })
     }
-    console.log(data)
+    // console.log(data)
     router.push("/")
     } catch (error) {
       console.log(error)

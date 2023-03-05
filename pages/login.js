@@ -31,10 +31,10 @@ const Login = () => {
         cookie.set("Token",data.token)
         cookie.set("user_role",data.user.role)
         cookie.set('user_details',JSON.stringify(data.user))
-        console.log(data.user)
+        // console.log(data.user)
         toast(`${data.message}`, { hideProgressBar: true, autoClose: 3000, type: 'success' })
       }
-      console.log(data)
+      // console.log(data)
       router.push("/")
     } catch (error) {
       console.log(error)
