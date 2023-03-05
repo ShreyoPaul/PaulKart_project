@@ -77,7 +77,7 @@ const addToCart = authenticated(async (req, res) => {
         
 
         if (cart) {
-            console.log("Cart product array : ",cart[0].products)
+            // console.log("Cart product array : ",cart[0].products)
             let product_flag = 0
             product_flag = cart[0].products.some((pdoc) => {
                 // console.log(pdoc)
