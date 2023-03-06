@@ -46,12 +46,12 @@ export async function getStaticProps(context) {
   }
 }
 
-// export async function getServerSideProps(context) {
-//   const res = await fetch(`${baseURL}/api/products`)
-//   const data = await res.json()
-//   // console.log(data)
-//   return {
-//     // Passed to the page component as props
-//     props: { products: data },
-//   }
-// }
+export async function getServerSideProps(context) {
+  const res = await fetch(`${baseURL}/api/products`)
+  const data = await res.json()
+  // console.log(data)
+  return {
+    // Passed to the page component as props
+    props: { products: data },
+  }
+}
