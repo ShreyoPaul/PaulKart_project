@@ -245,7 +245,7 @@ export async function getStaticPaths() {
         params: { pid: product._id }
     }))
     return {
-        paths, fallback: true
+        paths, fallback: false
     }
 }
 
