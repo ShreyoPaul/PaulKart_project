@@ -35,7 +35,7 @@ const authenticated = (comp) => {
             req.userId = cartInfo.userId
             return comp(req, res)
         } catch (error) {
-            console.log(error)
+            console.log("ERROR :",error)
             return res.status(401).json({ error: "You should login!" })
         }
     }
@@ -64,7 +64,7 @@ const getCart = authenticated(async (req, res) => {
         }
 
     } catch (error) {
-        console.log(error)
+        console.log("ERROR:",error)
         return res.status(401).json({ error: "You should login!" })
     }
 })
