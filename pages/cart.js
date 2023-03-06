@@ -20,7 +20,7 @@ const cart = (props) => {
   const [token, setToken] = useState(props.Token)
   // console.log(props)
 
-
+  console.log(props.products)
   const [cProducts, setCProducts] = useState(props.products)
 
   if (cProducts) {
