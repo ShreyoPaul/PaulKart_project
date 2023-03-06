@@ -139,7 +139,7 @@ const cart = (props) => {
     )
   }
 console.log("1")
-  if (props.products && token) {
+  if ( token) {
     // router.push('/login')
     // toast(`${error}`, { hideProgressBar: true, autoClose: 3000, type: 'error' })
     const CartItems = () => {
@@ -245,8 +245,8 @@ export async function getServerSideProps(context) {
     }
   })
   // console.log(await res.json())
-  const { products } = await res.json()
-  // console.log(res)
+  const {products} = await res.json()
+  console.log(products)
 
 
   return {

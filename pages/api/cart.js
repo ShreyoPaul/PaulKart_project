@@ -57,6 +57,7 @@ const getCart = authenticated(async (req, res) => {
         // console.log(req.userId)
         const cart = await Carts.find({ user: req.userId }).populate("products.product")
         if (cart) {
+            // console.log("Cart[0].products : \n",cart[0].products)
             return res.status(201).json(cart[0])
         }
         else {
