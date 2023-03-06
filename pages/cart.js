@@ -142,13 +142,8 @@ console.log("1")
     // router.push('/login')
     // toast(`${error}`, { hideProgressBar: true, autoClose: 3000, type: 'error' })
     const CartItems = () => {
-      useEffect(() => {
-        const { Token } = parseCookies()
-        console.log(cProducts)
-        setToken(Token)
-      }, [])
 
-      if (Array.from(cProducts).length > 0) {
+      if (cProducts.length > 0) {
         return (
           <div className="flex flex-row flex-wrap justify-center items-center ">
             {cProducts.map((item, id) => {
