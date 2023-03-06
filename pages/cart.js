@@ -33,7 +33,6 @@ const cart = (props) => {
   }
   // console.log(price)
 
-  // console.log("products : ", props.products)
 
   if (!token) {
     toast(`Login is required!`, { hideProgressBar: true, autoClose: 3000, type: 'error' })
@@ -198,7 +197,6 @@ console.log("1")
     )
   }
   else {
-    // console.log(props.products)
     router.push('/login')
     toast(`Something went wrong!`, { hideProgressBar: true, autoClose: 3000, type: 'error' })
 
