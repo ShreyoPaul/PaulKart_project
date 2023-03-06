@@ -218,7 +218,7 @@ export async function getServerSideProps(context) {
   if (!Token) {
     const { res } = context
     
-    res.writeHead(302, { Location: "/login" })
+    res.writeHead(302, { Location: "/signup" })
     res.end()
     return {
       props: { error: "You should login!" }
