@@ -198,6 +198,7 @@ const cart = (props) => {
     )
   }
   else {
+    console.log("problem")
     router.push('/login')
     toast(`Something went wrong!`, { hideProgressBar: true, autoClose: 3000, type: 'error' })
 
