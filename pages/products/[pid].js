@@ -222,31 +222,31 @@ const PoductPage = ({ product }) => {
     )
 }
 
-// export async function getServerSideProps({params:{pid}}){
-//     const res = fetch(`http://localhost:3000/api/products/${pid}`)
-//     const data = await (await res).json()
+export async function getServerSideProps({params:{pid}}){
+    const res = fetch(`http://localhost:3000/api/products/${pid}`)
+    const data = await (await res).json()
+    return {
+        props:{product : data}
+    }
+}
+
+// export async function getStaticProps({ params: { pid } }) {
+//     const res = await fetch(`${baseURL}/api/products/${pid}`)
+//     const data = await res.json()
 //     return {
-//         props:{product : data}
+//         props: { product: data }
 //     }
 // }
 
-export async function getStaticProps({ params: { pid } }) {
-    const res = await fetch(`${baseURL}/api/products/${pid}`)
-    const data = await res.json()
-    return {
-        props: { product: data }
-    }
-}
-
-export async function getStaticPaths() {
-    const res = await fetch(`${baseURL}/api/products`)
-    const data = await res.json()
-    const paths = data.map((product) => ({
-        params: { pid: product._id }
-    }))
-    return {
-        paths, fallback: true
-    }
-}
+// export async function getStaticPaths() {
+//     const res = await fetch(`${baseURL}/api/products`)
+//     const data = await res.json()
+//     const paths = data.map((product) => ({
+//         params: { pid: product._id }
+//     }))
+//     return {
+//         paths, fallback: true
+//     }
+// }
 
 export default PoductPage

@@ -138,7 +138,7 @@ const cart = (props) => {
       </div>
     )
   }
-console.log(props.products,token)
+console.log("1")
   if (props.products && token) {
     // router.push('/login')
     // toast(`${error}`, { hideProgressBar: true, autoClose: 3000, type: 'error' })
@@ -198,7 +198,7 @@ console.log(props.products,token)
     )
   }
   else {
-    console.log("problem")
+    console.log(props.products)
     router.push('/login')
     toast(`Something went wrong!`, { hideProgressBar: true, autoClose: 3000, type: 'error' })
 
