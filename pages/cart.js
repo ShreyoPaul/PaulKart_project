@@ -145,6 +145,7 @@ const cart = (props) => {
     const CartItems = () => {
       useEffect(() => {
         const { Token } = parseCookies()
+        console.log(Token)
         setToken(Token)
       }, [])
 
@@ -216,6 +217,7 @@ export async function getServerSideProps(context) {
 
   if (!Token) {
     const { res } = context
+    
     res.writeHead(302, { Location: "/login" })
     res.end()
     return {
