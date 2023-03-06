@@ -144,7 +144,7 @@ console.log("1")
     const CartItems = () => {
       useEffect(() => {
         const { Token } = parseCookies()
-        console.log(Token)
+        console.log(cProducts)
         setToken(Token)
       }, [])
 
