@@ -148,7 +148,7 @@ console.log("1")
         setToken(Token)
       }, [])
 
-      if (cProducts.length > 0) {
+      if (Array.from(cProducts).length > 0) {
         return (
           <div className="flex flex-row flex-wrap justify-center items-center ">
             {cProducts.map((item, id) => {
